@@ -1,7 +1,5 @@
 package appx.extensionsemantics.exact;
 
-import java.util.List;
-
 import appx.af.ArgumentationFramework;
 import appx.solver.ArgumentSetSolution;
 import appx.solver.BinarySolution;
@@ -177,5 +175,4 @@ public class SimpleGroundedSemanticsSolver extends Solver{
 		}
 		return true;
 	}
-
 }
