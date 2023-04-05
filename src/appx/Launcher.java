@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import appx.af.ArgumentationFramework;
 import appx.extensionsemantics.exact.SimpleGroundedSemanticsSolver;
+import appx.gradualsemantics.Categorizer;
 import appx.parser.AFParser;
 import appx.solver.Solution;
 import appx.solver.Solver;
@@ -26,6 +27,12 @@ public class Launcher {
 		Solver groundedSolver = new SimpleGroundedSemanticsSolver();
 		Solution sol = groundedSolver.solve(new Task(Problem.SE, Semantics.GR), af);
 		System.out.println(sol);
+		
+		/*
+		Categorizer hcatSolver = new Categorizer();
+		Solution sol_cat = hcatSolver.solve(new Task(Problem.SE, Semantics.GR), af);
+		System.out.println(hcatSolver.printScores());
+		*/
 	}
 
 }
