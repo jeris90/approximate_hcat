@@ -39,7 +39,7 @@ public class CategorizedBasedApproximateSolver extends Solver {
 	}
 	
 	/**
-	 * Builds a solver
+	 * Builds a solver without specifying the threshold. 
 	 * 
 	 */
 	public CategorizedBasedApproximateSolver() {
@@ -47,7 +47,7 @@ public class CategorizedBasedApproximateSolver extends Solver {
 	}
 	
 	/**
-	 * 
+	 * This function allows the threshold to be adjusted according to a given problem and semantics.
 	 * @param task
 	 */
 	private void choice_threshold(Task task) {

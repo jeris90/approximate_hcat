@@ -9,15 +9,9 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import java.util.LinkedList;
-
 import appx.af.ArgumentationFramework;
 import appx.extensionsemantics.approximate.CategorizedBasedApproximateSolver;
-import appx.extensionsemantics.exact.SimpleGroundedSemanticsSolver;
-import appx.gradualsemantics.Categorizer;
 import appx.parser.AFParser;
-import appx.parser.ParsingException;
-import appx.solver.Solution;
 import appx.solver.Solver;
 import appx.task.Problem;
 import appx.task.Semantics;
@@ -131,8 +125,6 @@ public class Launcher {
 			String afFile = null;
 			String problem = null;
 			String semantics = null;
-			//double threshold = -1;
-			double threshold = 0.5;
 			String argumentName = null;
 			
 			try {
@@ -168,7 +160,8 @@ public class Launcher {
 				}
 
 				if (line.hasOption("problems")) {
-					System.out.println("Problem");
+					System.out.println("[DC-CO,DC-ST,DC-SST,DC-STG,DC-ID,DS-PR,DS-ST,DS-SST,DS-STG]");
+					System.exit(0);
 				}
 
 			} catch (ParseException e) {
@@ -183,7 +176,7 @@ public class Launcher {
 				System.exit(1);
 			}
 			
-			ArgumentationFramework af;
+			ArgumentationFramework af = null;
 			Solver solver = null;
 			
 			long temps_start = System.currentTimeMillis();
@@ -192,7 +185,7 @@ public class Launcher {
 			//System.out.println("Import time : " + (temps_end-temps_start)/1000. + " secondes");
 			System.out.print((temps_end - temps_start)/1000.+";");
 				
-			solver = new CategorizedBasedApproximateSolver(threshold);
+			solver = new CategorizedBasedApproximateSolver();
 				
 			Task task = new Task(Problem.valueOf(problem), Semantics.valueOf(semantics));
 			task.addOption("-a", argumentName);
