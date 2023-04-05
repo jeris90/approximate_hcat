@@ -31,11 +31,14 @@ public class ArgumentationFramework {
 		return af_attackee;
 	}
 	
+	public int nb_arguments() {
+		return af_attacker.length;
+	}
+	
 	public String toString() {
 		StringBuilder res = new StringBuilder();
-		int arg = -1;
 		for (int i=0 ; i < af_attacker.length ; i++) {
-			res.append(i + " -> " + af_attacker[i].toString() + "\n");
+			res.append(i + " <- " + af_attacker[i].toString() + "\n");
 		}
 		return res.toString();
 	}

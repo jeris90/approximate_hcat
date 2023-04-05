@@ -3,7 +3,13 @@ package appx;
 import java.util.LinkedList;
 
 import appx.af.ArgumentationFramework;
+import appx.extensionsemantics.exact.SimpleGroundedSemanticsSolver;
 import appx.parser.AFParser;
+import appx.solver.Solution;
+import appx.solver.Solver;
+import appx.task.Problem;
+import appx.task.Semantics;
+import appx.task.Task;
 
 public class Launcher {
 
@@ -16,6 +22,10 @@ public class Launcher {
 		af.add_attack(1, 2);
 		*/
 		System.out.println(af);
+		
+		Solver groundedSolver = new SimpleGroundedSemanticsSolver();
+		Solution sol = groundedSolver.solve(new Task(Problem.SE, Semantics.GR), af);
+		System.out.println(sol);
 	}
 
 }

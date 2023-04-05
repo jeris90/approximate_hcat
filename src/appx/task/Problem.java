@@ -1,5 +1,5 @@
 package appx.task;
 
 public enum Problem {
-	DS, DC
+	DS, DC, SE
 }
