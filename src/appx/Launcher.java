@@ -14,6 +14,16 @@ import appx.task.Task;
 
 public class Launcher {
 
+	/***
+	 * Provides author(s) and version information of the solver.
+	 */
+	private static void information() {
+		System.out.println("ARIPOTER_hcat v1.0");
+		System.out.println("Jérôme Delobelle, jerome.delobelle@u-paris.fr");
+		System.out.println("Jean-Guy Mailly, jean-guy.mailly@u-paris.fr");
+		System.out.println("Julien Rossit, julien.rossit@u-paris.fr");
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArgumentationFramework af = AFParser.readingCNF("/Users/jdelobelle/Documents/recherche/approximation_semantique/instances/BA-numArg10-pbCycle0-0.cnf");
