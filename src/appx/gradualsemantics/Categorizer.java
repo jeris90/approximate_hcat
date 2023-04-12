@@ -92,7 +92,7 @@ public class Categorizer extends Solver {
 			throw new UnsupportedOperationException(
 					task.getProblem().toString() + " requires an argument name in the options.");
 		}
-		int index_argument = Integer.valueOf(argumentName);
+		int index_argument = Integer.valueOf(argumentName) - 1;
 		
 		
 		solution = new NumberSolution(scores[index_argument]);
