@@ -21,7 +21,7 @@ public class AFParser {
 			af = new ArgumentationFramework(nb_arg);
 			
 			while ((line = bf.readLine()) != null) {
-				if (!line.startsWith("#")) {
+				if (!line.startsWith("#") && (! line.trim().equals(""))) {
 					String[] arguments = parseCNFAttackLine(line);
 					int attacker = Integer.parseInt(arguments[0]);
 					int target = Integer.parseInt(arguments[1]);
