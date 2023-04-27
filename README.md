@@ -26,4 +26,13 @@ For instance,
 ```bash
 java -jar ARIPOTER_HCAT -jar -p DC-CO -f test.txt -a 1
 ```
-solves the credulous acceptability problem for the argument 1 in the AF described in test.txt, under the complete semantics.
+solves the credulous acceptability problem for the argument 1 in the AF described in test.txt, under the complete semantics. The `test.txt` file follows the DIMACS-like format from ICCMA 2023, for instance 
+```text
+p af 5
+1 2
+2 4
+4 5
+5 4
+5 5
+```
+describes an AF with 5 arguments, and attacks 1->2, 2->4, 4->5, 5->4 and 5->5.
