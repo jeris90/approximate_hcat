@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: appx.Launcher
+Class-Path: commons-cli-1.4.jar bin
+Sealed: true  
