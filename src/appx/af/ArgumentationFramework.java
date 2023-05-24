@@ -1,5 +1,6 @@
 package appx.af;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class ArgumentationFramework {
@@ -8,9 +9,12 @@ public class ArgumentationFramework {
 	
 	private LinkedList<Integer> [] af_attackee;
 	
+	private HashMap<String,Integer> argument_names;
+	
 	public ArgumentationFramework(int nb_arg) {
 		af_attacker = new LinkedList[nb_arg];
 		af_attackee = new LinkedList[nb_arg];
+		argument_names = new HashMap<>();
 		
 		for (int i=0 ; i < nb_arg ; i++) {
 			af_attacker[i] = new LinkedList<Integer>(); 
@@ -21,6 +25,14 @@ public class ArgumentationFramework {
 	public void add_attack(int attacker, int target) {
 		af_attacker[target].add(attacker);
 		af_attackee[attacker].add(target);
+	}
+	
+	public void add_argument(String name_arg, int index_arg) {
+		argument_names.put(name_arg, index_arg);
+	}
+	
+	public int getArgumentFromName(String name_arg) {
+		return argument_names.get(name_arg);
 	}
 	
 	public LinkedList<Integer>[] get_af_attacker(){

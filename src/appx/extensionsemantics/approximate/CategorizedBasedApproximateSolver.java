@@ -98,24 +98,27 @@ public class CategorizedBasedApproximateSolver extends Solver {
 		if (argumentName == null) {
 			throw new UnsupportedOperationException("This solver requires an argument name in the options.");
 		}
-		int argument = Integer.valueOf(argumentName) - 1;
+		//int argument = Integer.valueOf(argumentName) - 1;
+		int argument = af.getArgumentFromName(argumentName);
+		
+		
 		
 		/* Grounded part */
 		
-		//long temps_start = System.currentTimeMillis();
+		long temps_start = System.currentTimeMillis();
 		Solution sol = groundedSolver.solve(new Task(Problem.SE, Semantics.GR), af);
-		//long temps_end = System.currentTimeMillis();
-		//System.out.print((temps_end - temps_start)/1000.+";");
+		long temps_end = System.currentTimeMillis();
+		System.out.print((temps_end - temps_start)/1000.+";");
 		
 		ArgumentSetSolution groundedExtension = (ArgumentSetSolution) sol;
 		
 		if (groundedExtension.containsArgument(argument)) {
-			//System.out.print("None;None;");
+			System.out.print("None;None;");
 			return new BinarySolution(true);
 		}
 		for (int attacker : af.get_af_attacker()[argument]) {
 			if (groundedExtension.containsArgument(attacker)) {
-				//System.out.print("None;None;");
+				System.out.print("None;None;");
 				return new BinarySolution(false);
 			}
 		}
@@ -126,11 +129,11 @@ public class CategorizedBasedApproximateSolver extends Solver {
 		Categorizer cat = new Categorizer();
 		Task t = new Task(null, null);
 		t.addOption("-a", argumentName);
-		//temps_start = System.currentTimeMillis();
+		temps_start = System.currentTimeMillis();
 		NumberSolution degree = (NumberSolution) cat.solve(t, af);
-		//temps_end = System.currentTimeMillis();
-		//System.out.print((temps_end - temps_start)/1000.+";");
-		//System.out.print(degree.getValue()+";");
+		temps_end = System.currentTimeMillis();
+		System.out.print((temps_end - temps_start)/1000.+";");
+		System.out.print(degree.getValue()+";");
 		
 		choice_threshold(task);
 		if (degree.getValue() >= threshold) {

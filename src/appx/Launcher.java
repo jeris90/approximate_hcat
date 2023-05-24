@@ -61,6 +61,9 @@ public class Launcher {
 		Option argumentOption = Option.builder("a").longOpt("argument")
 				.desc("Quary argument for credulous and skeptical acceptance").hasArg(true).argName("argument")
 				.required(false).build();
+		
+		Option formatOption = Option.builder("fo").longOpt("formats").desc("Format of the file containing the AF.")
+				.hasArg(true).argName("format").required(false).build();
 
 		Options options = new Options();
 
@@ -68,6 +71,7 @@ public class Launcher {
 		options.addOption(taskOption);
 		options.addOption(problemOption);
 		options.addOption(argumentOption);
+		options.addOption(formatOption);
 
 		// Add option for argument query
 
@@ -126,13 +130,16 @@ public class Launcher {
 			String problem = null;
 			String semantics = null;
 			String argumentName = null;
+			String format = "cnf";
 			
 			try {
 				line = parser.parse(options, args);
 
 				if (line.hasOption("f")) {
 					afFile = line.getOptionValue("f");
-					// TO DO: handle the file format, and provide several parsers.
+					if(line.hasOption("fo")) {
+						format = line.getOptionValue("fo");
+					}
 				}
 
 				if (line.hasOption("p")) {
@@ -179,10 +186,10 @@ public class Launcher {
 			ArgumentationFramework af = null;
 			Solver solver = null;
 			
-			//long temps_start = System.currentTimeMillis();
-			af = AFParser.readingCNF(afFile);
-			//long temps_end = System.currentTimeMillis();
-			//System.out.print((temps_end - temps_start)/1000.+";");
+			long temps_start = System.currentTimeMillis();
+			af = AFParser.readingFile(afFile,format);
+			long temps_end = System.currentTimeMillis();
+			System.out.print((temps_end - temps_start)/1000.+";");
 				
 			solver = new CategorizedBasedApproximateSolver();
 				
